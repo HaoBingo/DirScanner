@@ -1,0 +1,4 @@
+/admin
+/manage
+/login.php
+/index.php
