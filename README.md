@@ -9,6 +9,7 @@
 ## 2017/03/10 立项
 1. 正式立项（想法有了很久，拖延症）
 2. 边写边学习git
+ps: 就push了一个readme
 
 ## 参考
 https://github.com/qiyeboy/IPProxyPool

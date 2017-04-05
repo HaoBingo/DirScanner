@@ -3,22 +3,19 @@
 
 import requests
 import sys
+import config
 
-# 字典路径
-dir_Path = 'directory.txt'
-timeout = 2
-headers = {}
 
 def usage():
-    print '''Usage: \npython %s http://foo.com/''' %sys.argv[0]
+    print "Usage: \npython %s http://foo.com/" %sys.argv[0]
 
 def scan(url):
-    f = open(dir_Path, "r")
+    f = open(config.dir_Path, "r")
     for path in f:
         #pass    # do scanhere
         scan_url = url + path.strip()
         #print url
-        res = requests.get(url=scan_url,headers=headers,timeout=timeout)
+        res = requests.get(url=scan_url,headers=config.HEADER,timeout=config.TIMEOUT)
         status = res.status_code
         print "[%d]\t %s" %(status,scan_url)
     f.close()
