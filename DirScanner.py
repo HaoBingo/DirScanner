@@ -4,10 +4,8 @@
 import requests
 import sys
 import config
+import argparse
 
-
-def usage():
-    print "Usage: \npython %s http://foo.com/" %sys.argv[0]
 
 def scan(url):
     f = open(config.dir_Path, "r")
@@ -21,14 +19,17 @@ def scan(url):
     f.close()
 
 def main():
-    if len(sys.argv) != 2:
-        usage()
-        sys.exit(0)
-    url = sys.argv[1]
-    if "http://" not in url:
-        url = "http://%s" %url
-    #print "url:\t %s" %url
-    scan(url)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('website',help="website for scan,eg: http://www.baidu.com")
+    parser.add_argument('-t', '--thread', action="store_true")
+    parser.add_argument('--suffix',help="This is suffix on scan file")
+    args = parser.parse_args()
+
+    url = args.website
+    if "http://" not in url and "https://" not in url:
+        url = "http://{}".format(url)
+    print "url:\t {}".format(url)
+    #scan(url)
 
 
 
